@@ -1,18 +1,182 @@
 <!DOCTYPE html>
 <html lang="ru" data-validate="html">
 
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Internship</title>
-    <link rel="stylesheet" href="sass/style.scss">
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Стажировка - проект для повышения квалификации</title>
+  <link rel="stylesheet" href="sass/style.scss">
+  <link rel="preload" href="fonts/Manrope-Light.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="fonts/Manrope-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="fonts/Manrope-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+</head>
 
-  <body class="page-body">
+<body class="page-body">
+  <section class="hero" data-test="hero">
+    <h1 class="hero__title visually-hidden">Проект "Стажировка" - повышение квалификации.</h1>
+    <div class="hero__wrapper container">
+      <header class="main-header">
+        <nav class="main-nav main-nav--closed">
+          <div class="main-header__container header">
+            <img class="header__logo" src="/__spritemap#sprite-logo-view" width="52" height="52" alt="Логотип сайта">
+            <button class="header__button" type="button" aria-label="Открыть меню">Меню</button>
+            <div class="header__nav menu">
+              <ul class="menu__list">
+                <li class="menu__item">
+                  <a class="menu__link" href="#tours">О проекте</a>
+                </li>
+                <li class="menu__item">
+                  <a class="menu__link menu__link--drop" href="#">Программы</a>
+                  <ul class="menu__submenu">
+                    <li class="menu__submenu-item">
+                      <a class="menu__submenu-link" href="#">Стажировки</a>
+                    </li>
+                    <li class="menu__submenu-item">
+                      <a class="menu__submenu-link" href="#">Волонтёрство</a>
+                    </li>
+                    <li class="menu__submenu-item">
+                      <a class="menu__submenu-link" href="#">Учеба</a>
+                    </li>
+                    <li class="menu__submenu-item">
+                      <a class="menu__submenu-link" href="#">Религия</a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="menu__item">
+                  <a class="menu__link" href="#about">Как поехать</a>
+                </li>
+                <li class="menu__item">
+                  <a class="menu__link" href="#reviews">Отзывы</a>
+                </li>
+                <li class="menu__item">
+                  <a class="menu__link menu__link--drop" href="#">Новости</a>
+                  <ul class="menu__submenu">
+                    <li class="menu__submenu-item">
+                      <a class="menu__submenu-link" href="#">Общее</a>
+                    </li>
+                    <li class="menu__submenu-item">
+                      <a class="menu__submenu-link" href="#">Волонтёрство</a>
+                    </li>
+                    <li class="menu__submenu-item">
+                      <a class="menu__submenu-link" href="#">Стажировки</a>
+                    </li>
+                    <li class="menu__submenu-item">
+                      <a class="menu__submenu-link" href="#">Карьера</a>
+                    </li>
+                    <li class="menu__submenu-item">
+                      <a class="menu__submenu-link" href="#">Путешествия</a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="menu__item">
+                  <a class="menu__link" href="#contacts">Контакты</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+    </div>
+    <div class="hero__slider-wrapper hero-slider swiper">
+      <ul class="hero-slider__list swiper-wrapper">
+        <li class="hero-slider__item swiper-slide">
+          <div class="hero-slider__image-wrapper">
+            <picture>
+              <source media="(min-width: 1440px)" type="image/webp" width="1440" height="800" srcset="img/hero-slider-1-desk@1x.webp, img/hero-slider-1-desk@2x.webp 2x">
+              <source type="image/webp" width="1280" height="853" srcset="img/hero-slider-1@1x.webp, img/hero-slider-1@2x.webp 2x">
+              <source media="(min-width: 1440px)" srcset="img/hero-slider-1-desk@1x.jpg, img/hero-slider-1-desk@2x.jpg 2x" type="image/jpg" width="1440" height="800">
+              <img class="hero-slider__image" src="img/hero-slider-1@1x.jpg" srcset="img/hero-slider-1@2x.jpg 2x" width="1280" height="853" alt="Девушка с папкой в руках">
+            </picture>
+          </div>
+          <div class="hero-slider__text-wrapper">
+            <h2 class="hero-slider__title">Глобальный профессиональный опыт обучения за&nbsp;рубежом</h2>
+            <div class="hero-slider__container">
+              <p>Погрузитесь в академическую программу, проходя практику в&nbsp;разных городах, ощущая настоящий студенческий стиль жизни!</p>
+              <div class="hero-slider__button-wrapper">
+                <button class="hero-slider__button" type="button">Подробнее</button>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="hero-slider__item swiper-slide">
+          <div class="hero-slider__image-wrapper">
+            <picture>
+              <source media="(min-width: 1440px)" type="image/webp" width="1440" height="800" srcset="img/hero-slider-2-desk@1x.webp, img/hero-slider-2-desk@2x.webp 2x">
+              <source type="image/webp" width="1280" height="853" srcset="img/hero-slider-2@1x.webp, img/hero-slider-2@2x.webp 2x">
+              <source media="(min-width: 1440px)" srcset="img/hero-slider-2-desk@1x.jpg, img/hero-slider-2-desk@2x.jpg 2x" type="image/jpg" width="1440" height="800">
+              <img class="hero-slider__image" src="img/hero-slider-2@1x.jpg" srcset="img/hero-slider-2@2x.jpg 2x" width="1280" height="853" alt="Молодые специалисты на предприятии">
+            </picture>
+          </div>
+          <div class="hero-slider__text-wrapper">
+            <h2 class="hero-slider__title">Волонтёрские программы — внесите свой вклад в общество</h2>
+            <div class="hero-slider__container">
+              <p>Возможности для преподавания, органического сельского хозяйства, устойчивого образа жизни и другое.</p>
+              <div class="hero-slider__button-wrapper">
+                <button class="hero-slider__button" type="button">Подробнее</button>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="hero-slider__item swiper-slide">
+          <div class="hero-slider__image-wrapper">
+            <picture>
+              <source media="(min-width: 1440px)" type="image/webp" width="1440" height="800" srcset="img/hero-slider-3-desk@1x.webp, img/hero-slider-3-desk@2x.webp 2x">
+              <source type="image/webp" width="1280" height="853" srcset="img/hero-slider-3@1x.webp, img/hero-slider-3@2x.webp 2x">
+              <source media="(min-width: 1440px)" srcset="img/hero-slider-3-desk@1x.jpg, img/hero-slider-3-desk@2x.jpg 2x" type="image/jpg" width="1440" height="800">
+              <img class="hero-slider__image" src="img/hero-slider-3@1x.jpg" srcset="img/hero-slider-3@2x.jpg 2x" width="1280" height="853" alt="Мужчина и женщины на совещании">
+            </picture>
+          </div>
+          <div class="hero-slider__text-wrapper">
+            <h2 class="hero-slider__title">Программы стажировок в крупнейших компаниях мира</h2>
+            <div class="hero-slider__container">
+              <p>Получите незаменимый опыт работы в ведущих мировых компаниях и государственных организациях.</p>
+              <div class="hero-slider__button-wrapper">
+                <button class="hero-slider__button" type="button">Подробнее</button>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div class="hero-slider__pagination swiper-pagination"></div>
+    </div>
+  </section>
+  <main class="main-container">
+    <section class="about" data-test="about">
+      <div class="about__text-wrapper">
+        <div class="about__mission-wrapper">
+          <h2 class="about__title">О проекте «Стажировка»</h2>
+          <p>«Стажировка» — совместный проект правительств и волонтёрских бригад.</p>
+        </div>
+        <div class="about__goal-wrapper">
+          <h3>Наша цель</h3>
+          <p>Наша деятельность направлена на повышение квалификации молодых специалистов на ранних и средних стадиях карьеры, предоставляя им инструменты для решения сложных проблем, с которыми сталкиваются в мире. Цель центра — наделить этих людей способностью инициировать значимые изменения.</p>
+          <button class="about__button" type="button">Подробнее о проекте</button>
+        </div>
+      </div>
+      <div class="about__advantages advantages">
+        <ul class="advantages__list">
+          <li class="advantages__item advantages__item--programs">
+            <h3>Более 250 программ</h3>
+            <p>учебных и рабочих, разной длительностью от 3 месяцев до 1 года</p>
+          </li>
+          <li class="advantages__item advantages__item--participants">
+            <h3>Более 3000 участников</h3>
+            <p>уже успешно прошли программу от «Стажировка» и остались в разных странах</p>
+          </li>
+          <li class="advantages__item advantages__item--country">
+            <h3>участники из 60 стран</h3>
+            <p>студенты со всего мира приезжают на программу «Стажировки» от 3 месяцев до 1 года</p>
+          </li>
+          <li class="advantages__item advantages__item--grant">
+            <h3>от 4 200 $ до 8 400 $</h3>
+            <p>грант всем участникам для комфортного прохождения программы</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
 
-
-    
-    <!-- <img src="/__spritemap#sprite-logo-view" alt="Это спрайт">
+  <!-- <img src="/__spritemap#sprite-logo-view" alt="Это спрайт">
     <svg>
       <use href="/__spritemap#sprite-user"></use>
     </svg>
@@ -27,6 +191,48 @@
     <div data-test="form">form</div>
     <div data-test="footer">footer</div>
     <script type="module" src="js/main.js"></script> -->
-  </body>
+  <div class="overlay"></div>
+  <div class="popap-container popap-container--closed">
+    <div class="popap-container__request">
+      <button class="popap-container__button" type="button" aria-label="Закрыть"></button>
+      <section class="popap-content">
+        <div class="popap-content__text-wrapper">
+          <h2 class="popap-content__title">Напишите нам</h2>
+          <p class="popap-content__text">Оставьте ваши контакты, <br>если у вас остались вопросы – мы на них ответим!</p>
+        </div>
+        <form class="popap-content__form form-popap" action="https://echo.htmlacademy.ru/" method="post" autocomplete="off">
+          <div class="form-popap__form-group">
+            <label class="form-popap__label" for="name">Имя</label>
+            <input class="form-popap__input" type="text" id="name" name="name" required data-required="Заполните поле" data-pattern-mismatch="Введите Email в формате __@__.__">
+          </div>
+          <div class="form-popap__form-group">
+            <label class="form-popap__label" for="phone">Телефон</label>
+            <input class="form-popap__input" type="tel" id="phone" name="phone" required pattern="^\+7\s\([0-9]{3}\)-[0-9]{3}-[0-9]{2}-[0-9]{2}$" data-required="Заполните поле" data-pattern-mismatch="Вводите только цифры" data-pattern-phone-message="Требуемый формат +7 (000)-000-00-00">
+          </div>
+          <div class="form-popap__form-group">
+            <label class="form-popap__label" for="city">Выберите город</label>
+            <select class="form-popap__select form-popap__input" name="city" id="city">
+              <option value="" label=" " selected disabled hidden></option>
+              <option value="Saint-Petersburg">Санкт-Петербург</option>
+              <option value="Moscow">Москва</option>
+              <option value="Kaluga">Калуга</option>
+              <option value="Obninsk">Обнинск</option>
+              <option value="Kazan">Казань</option>
+            </select>
+          </div>
+          <div class="form-popap__checkbox">
+            <label class="form-popap__control-label">
+              <input class="form-popap__control-input visually-hidden" value="yes" name="checkbox" type="checkbox" required>
+              <span class="form-popap__indicator"></span>
+              <span class="form-popap__text">Я согласен на обработку моих персональных данных</span>
+            </label>
+          </div>
+          <button class="form-popap__button" type="submit">Отправить</button>
+        </form>
+      </section>
+    </div>
+  </div>
+  <script type="module" src="js/main.js"></script>
+</body>
 
 </html>

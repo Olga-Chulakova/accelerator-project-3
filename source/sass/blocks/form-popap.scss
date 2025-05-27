@@ -1,0 +1,205 @@
+.form-popap__form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: flex-start;
+  margin-bottom: 15px;
+
+  @media (min-width: $tablet) {
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  &:hover,
+  &:focus-within {
+    .form-popap__label {
+      color: rgba(72, 72, 72, 1);
+    }
+  }
+}
+
+.form-popap__label {
+  margin: 0;
+  padding: 0;
+  font-weight: 400;
+  font-size: $font-size-14;
+  line-height: 14px;
+  color: rgba(72, 72, 72, 0.8);
+  text-align: left;
+
+  @media (min-width: $tablet) {
+    line-height: 20px;
+  }
+
+  @media (min-width: $desktop) {
+    line-height: 18px;
+  }
+}
+
+.form-popap__form-group:has(.form-popap__input:disabled) .form-popap__label {
+  color: rgba(169, 175, 183, 0.6);
+}
+
+.form-popap__input {
+  height: 44px;
+  border-radius: 8px;
+  border: 1px solid rgba(72, 72, 72, 0.3);
+  box-sizing: border-box;
+  color: $color-basis;
+  font-family: $manrope;
+  font-size: $font-size-14;
+  line-height: 14px;
+  outline: none;
+  position: relative;
+  padding: 10px 20px;
+
+  @media (min-width: $tablet) {
+    height: 50px;
+  }
+
+  &:hover,
+  &:active,
+  &:focus,
+  &:focus-visible {
+    border: 1px solid rgba(72, 72, 72, 1);
+  }
+
+  &:disabled {
+    color: rgba(169, 175, 183, 0.2);
+    border: 1px solid rgba(169, 175, 183, 0.5);
+  }
+}
+
+.form-popap__select {
+  font-family: $manrope;
+  position: relative;
+  appearance: none;
+  background-image: url("/__spritemap#sprite-arrow-dropdown-view");
+  background-repeat: no-repeat;
+  background-position: right 20px center;
+  background-size: 16px 16px;
+}
+
+.form-popap__select-hidden {
+  display: none;
+}
+
+
+.form-popap__checkbox {
+  margin-bottom: 25px;
+}
+
+.form-popap__control-label {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.form-popap__indicator {
+  width: 20px;
+  height: 20px;
+  background-color: $color-accent;
+  border-radius: 2px;
+  border: 1px solid $color-accent;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-popap__control-input:checked + .form-popap__indicator {
+  &::before {
+    content: "";
+    display: inline-block;
+    mask-image: url("/__spritemap#sprite-checked-view");
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: 10px 10px;
+    background-color: $color-additional;
+    width: 10px;
+    height: 10px;
+  }
+}
+
+.form-popap__text {
+  font-weight: 400;
+  font-size: $font-size-12;
+  line-height: 14px;
+  color: $color-basis;
+  text-align: left;
+  width: 230px;
+  opacity: 0.9;
+
+  @media (min-width: $tablet) {
+    width: auto;
+    line-height: 12px;
+  }
+}
+
+.form-popap__button {
+  min-height: 42px;
+  width: 100%;
+  font-weight: 500;
+  font-size: $font-size-12;
+  line-height: 12px;
+  color: $color-accent;
+  letter-spacing: 0.24px;
+  text-transform: uppercase;
+  padding: 0 68px 0 30px;
+  border: 1px solid $color-accent;
+  border-radius: 30px;
+  box-sizing: border-box;
+  background-color: $color-additional;
+  cursor: pointer;
+  position: relative;
+  margin: 0 auto;
+  display: block;
+
+  &::before {
+    content: "";
+    position: absolute;
+    background-color: $color-accent;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    top: 50%;
+    right: 4px;
+    transform: translateY(-50%);
+    z-index: 1;
+    background-position: center;
+
+    @media (min-width: $tablet) {
+      width: 46px;
+      height: 46px;
+    }
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    mask-image: url("/__spritemap#sprite-arrow-hero-view");
+    mask-repeat: no-repeat;
+    mask-size: 8px 8px;
+    mask-position: center;
+    background-color: #ffffff;
+    display: block;
+    width: 8px;
+    height: 8px;
+    top: 50%;
+    right: 17px;
+    transform: translateY(-50%);
+    z-index: 10;
+
+    @media (min-width: $tablet) {
+      right: 23px;
+    }
+  }
+
+  @media (min-width: $tablet) {
+    width: 194px;
+    min-height: 54px;
+    padding: 0 80px 0 30px;
+  }
+}

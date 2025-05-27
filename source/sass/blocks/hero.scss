@@ -1,0 +1,18 @@
+.hero {
+  position: relative;
+}
+
+.hero__slider-wrapper.swiper {
+  position: relative;
+  width: 100%;
+  min-height: 568px;
+  z-index: 1;
+}
+
+.hero__wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}

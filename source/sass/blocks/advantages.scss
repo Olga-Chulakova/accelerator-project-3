@@ -1,0 +1,142 @@
+.advantages__list {
+  padding: 42px 20px 40px;
+  margin: 0 auto;
+  list-style-type: none;
+  background-color: $color-accent;
+  border-radius: 20px;
+  width: 290px;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 22px;
+
+  @media (min-width: $tablet) {
+    width: 678px;
+    padding: 72px 50px 50px 70px;
+    flex-direction: row;
+    gap: 54px 52px;
+  }
+
+  @media (min-width: $desktop) {
+    width: 1240px;
+    padding: 72px 100px 50px 120px;
+  }
+}
+
+.advantages__item {
+  border-radius: 16px;
+  border: 1px solid $color-main;
+  box-sizing: border-box;
+  padding: 15px 20px;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    width: 42px;
+    height: 42px;
+    background-color: $color-accent;
+    top: -23px;
+    left: -21px;
+    background-image: url("/__spritemap#sprite-star-about-view");
+    background-repeat: no-repeat;
+    background-size: 18px 22px;
+    background-position: center;
+  }
+
+  @media (min-width: $tablet) {
+    width: 253px;
+    padding: 16px 20px 15px;
+  }
+
+  @media (min-width: $desktop) {
+    padding: 30px 40px;
+    width: 484px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.advantages__item h3 {
+  margin: 0;
+  margin-bottom: 15px;
+  font-weight: 400;
+  font-size: $font-size-16;
+  line-height: 20px;
+  letter-spacing: 0.16px;
+  color: $color-additional;
+  text-align: left;
+  text-transform: uppercase;
+
+
+  @media (min-width: $tablet) {
+    margin-bottom: 14px;
+    font-size: $font-size-20;
+    line-height: 22px;
+    letter-spacing: 0.2px;
+  }
+
+  @media (min-width: $desktop) {
+    font-size: $font-size-26;
+    line-height: 30px;
+    letter-spacing: 0.26px;
+    margin-bottom: 0;
+    width: 55%;
+  }
+}
+
+.advantages__item--grant h3 {
+  width: 55%;
+
+  @media (min-width: $desktop) {
+    width: 48%;
+  }
+}
+
+.advantages__item p {
+  margin: 0;
+  font-weight: 300;
+  font-size: $font-size-14;
+  line-height: 20px;
+  color: $color-additional;
+  text-align: left;
+
+
+  @media (min-width: $tablet) {
+    font-size: $font-size-16;
+  }
+}
+
+.advantages__item--programs p {
+  @media (min-width: $desktop) {
+    width: 55%;
+  }
+}
+
+.advantages__item--participants p {
+  @media (min-width: $tablet) {
+    width: 80%;
+  }
+
+  @media (min-width: $desktop) {
+    width: 55%;
+  }
+}
+
+.advantages__item--country p {
+  @media (min-width: $desktop) {
+    width: 55%;
+  }
+}
+
+.advantages__item--grant p {
+  @media (min-width: $tablet) {
+    width: 90%;
+  }
+
+  @media (min-width: $desktop) {
+    width: 50%;
+  }
+}
