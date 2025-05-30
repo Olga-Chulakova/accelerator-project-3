@@ -1,0 +1,437 @@
+.programs {
+  padding: 51px 0 50px;
+
+  @media (min-width: $tablet) {
+    padding: 50px 0;
+  }
+
+  @media (min-width: $desktop) {
+    padding: 60px 0;
+  }
+}
+
+.programs__wrapper {
+  width: 320px;
+  margin: 0 auto;
+  position: relative;
+
+  @media (min-width: $tablet) {
+    width: auto;
+    margin: 0 0 0 auto;
+  }
+
+  @media (min-width: $desktop) {
+    width: 1240px;
+    margin: 0 auto;
+  }
+}
+
+.programs__controll-wrapper {
+  margin-bottom: 29px;
+  display: flex;
+  align-items: center;
+  min-height: 30px;
+
+  @media (min-width: $tablet) {
+    margin-bottom: 40px;
+    min-height: 56px;
+  }
+
+  @media (min-width: $desktop) {
+    min-height: 60px;
+  }
+}
+
+.programs__title {
+  max-width: 200px;
+
+  @media (min-width: $tablet) {
+    max-width: 350px;
+  }
+
+  @media (min-width: $desktop) {
+    max-width: 800px;
+  }
+}
+
+.programs__slider-wrapper.swiper {
+  padding: 0 15px;
+  margin-bottom: 30px;
+
+  @media (min-width: $tablet) {
+    padding: 0 15px 0 45px;
+    margin-bottom: 40px;
+  }
+
+  @media (min-width: $desktop) {
+    padding: 0;
+  }
+}
+
+.programs__list {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.programs__item.swiper-slide {
+  min-height: 400px;
+  position: relative;
+  display: grid;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(49, 109, 194, 0.2);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  @media (min-width: $tablet) {
+    width: auto;
+  }
+}
+
+.programs__image-wrapper {
+  grid-row: 1 / -1;
+  grid-column: 1 / -1;
+}
+
+.programs__image {
+  display: block;
+  object-fit: cover;
+  border-radius: 12px;
+  height: 400px;
+  min-height: 100%;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(49, 109, 194, 0.2);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  @media (min-width: $tablet) {
+    height: 420px;
+  }
+}
+
+.programs__text-wrapper {
+  grid-row: 1 / -1;
+  grid-column: 1 / -1;
+  align-self: self-end;
+  padding: 100px 10px 18px;
+  width: 270px;
+  z-index: 2;
+
+  @media (min-width: $tablet) {
+    padding: 200px 20px 10px;
+    width: 284px;
+  }
+
+  @media (min-width: $desktop) {
+    padding: 260px 20px 17px;
+    width: 321px;
+  }
+}
+
+.programs__slider-title {
+  font-size: $font-size-16;
+  line-height: 18px;
+  font-weight: 400;
+  text-align: left;
+  color: $color-accent;
+  margin: 0;
+  width: 146px;
+  padding: 18px 35px 6px 18px;
+  border-radius: 12px 12px 0 0;
+  background-color: $color-additional;
+  box-sizing: border-box;
+  position: relative;
+
+
+  &::after {
+    content: "";
+    position: absolute;
+    background-image: url("/__spritemap#sprite-angle-view");
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 18px;
+    height: 18px;
+    right: -18px;
+    bottom: 0;
+    rotate: -90deg;
+  }
+
+  @media (min-width: $tablet) {
+    font-size: $font-size-20;
+    line-height: 14px;
+    width: 173px;
+    padding: 19px 18px 5px;
+  }
+
+  @media (min-width: $desktop) {
+    font-size: $font-size-24;
+    line-height: 17px;
+    width: 194px;
+    padding: 18px 12px 6px 18px;
+  }
+}
+
+.programs__slider-text {
+  width: 270px;
+  padding: 12px 18px 14px;
+  border-radius: 0 12px 12px;
+  background-color: $color-additional;
+  box-sizing: border-box;
+  min-height: 69px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+
+  @media (min-width: $tablet) {
+    width: 284px;
+    padding: 12px 18px 15px;
+  }
+
+  @media (min-width: $desktop) {
+    width: 321px;
+    min-height: 82px;
+  }
+}
+
+.programs__slider-link {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: $color-accent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -1px;
+
+  &::after {
+    content: "";
+    display: inline-block;
+    mask-image: url("/__spritemap#sprite-arrow-btn-view");
+    mask-repeat: no-repeat;
+    mask-position: center;
+    background-color: #ffffff;
+    width: 8px;
+    height: 8px;
+  }
+}
+
+.programs__item p {
+  font-size: $font-size-12;
+  line-height: 14px;
+  font-weight: 400;
+  text-align: left;
+  color: $color-basis;
+  margin: 0;
+  width: 188px;
+
+  @media (min-width: $tablet) {
+    font-size: $font-size-14;
+    line-height: 20px;
+    width: 202px;
+  }
+
+  @media (min-width: $desktop) {
+    line-height: 18px;
+    width: 239px;
+  }
+}
+
+.programs__link-wrapper {
+  width: 290px;
+  margin: 0 auto;
+
+  @media (min-width: $tablet) {
+    width: auto;
+    position: absolute;
+    top: 0;
+    right: 45px;
+  }
+
+  @media (min-width: $desktop) {
+    top: 2px;
+    right: 0;
+  }
+}
+
+.programs__link {
+  text-decoration: none;
+  text-transform: uppercase;
+  min-height: 44px;
+  font-weight: 500;
+  font-size: $font-size-12;
+  line-height: 12px;
+  letter-spacing: 0.24px;
+  color: $color-accent;
+  background-color: transparent;
+  padding: 1px 69px 0 31px;
+  border-radius: 30px;
+  border: 1px solid $color-accent;
+  box-sizing: border-box;
+  outline: none;
+  width: 205px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+
+  &::before {
+    content: "";
+    position: absolute;
+    background-color: $color-accent;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    top: 50%;
+    right: 4px;
+    transform: translateY(-50%);
+    z-index: 1;
+    background-position: center;
+
+    @media (min-width: $tablet) {
+      width: 46px;
+      height: 46px;
+    }
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    mask-image: url("/__spritemap#sprite-arrow-btn-view");
+    mask-repeat: no-repeat;
+    mask-position: center;
+    background-color: #ffffff;
+    display: block;
+    width: 8px;
+    height: 8px;
+    top: 50%;
+    right: 18px;
+    transform: translateY(-50%);
+    z-index: 10;
+
+    @media (min-width: $tablet) {
+      mask-size: 8px 8px;
+      width: 8px;
+      height: 8px;
+      right: 23px;
+    }
+
+    @media (min-width: $desktop) {
+      right: 23px;
+    }
+  }
+
+  @media (min-width: $tablet) {
+    font-size: $font-size-14;
+    line-height: 14px;
+    letter-spacing: 0.28px;
+    width: 234px;
+    min-height: 56px;
+    padding: 0 81px 0 30px;
+  }
+}
+
+.programs__controll-slider {
+  @media (min-width: $tablet) {
+    display: flex;
+    gap: 62px;
+    align-items: center;
+  }
+
+  @media (min-width: $desktop) {
+    gap: 50px;
+  }
+}
+
+.programs__scrollbar.swiper-scrollbar {
+  display: none;
+
+  @media (min-width: $tablet) {
+    display: block;
+    width: 562px;
+    height: 2px;
+    background-color: rgba(49, 109, 194, 0.2);
+  }
+
+  @media (min-width: $desktop) {
+    display: block;
+    width: 1136px;
+  }
+}
+
+.programs__scrollbar .swiper-scrollbar-drag {
+  cursor: pointer;
+  background-color: $color-accent;
+  height: 2px;
+}
+
+
+.programs__slider-buttons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: absolute;
+  top: 3px;
+  right: 15px;
+
+  @media (min-width: $tablet) {
+    position: relative;
+    top: 0;
+    right: 0;
+    gap: 10px;
+    margin-left: auto;
+  }
+}
+
+.programs__slider-button.swiper-button-prev,
+.programs__slider-button.swiper-button-next {
+  width: 22px;
+  height: 22px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  padding: 0;
+  z-index: 10;
+  box-sizing: border-box;
+  background-color: $color-main;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 9px;
+    height: 9px;
+    mask: url("/__spritemap#sprite-arrow-slider-view");
+    background-color: $color-accent;
+    mask-size: cover;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: background-color 0.2s ease-in-out;
+    z-index: 1;
+  }
+}
+
+.programs__slider-button--prev.swiper-button-prev {
+  transform: rotate(-180deg);
+}

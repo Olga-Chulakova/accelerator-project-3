@@ -4,11 +4,6 @@
   list-style-type: none;
 }
 
-// .hero-slider__list.swiper-wrapper {
-//   position: absolute;
-//   top: 0;
-// }
-
 .hero-slider__item.swiper-slide {
   width: 100%;
   min-height: 568px;
@@ -25,6 +20,7 @@
     height: 100%;
     background: rgba(49, 109, 194, 0.2);
     pointer-events: none;
+    z-index: 1;
   }
 
   @media (min-width: $tablet) {
@@ -324,8 +320,6 @@
   background-color: $color-additional;
   border-radius: 12px 12px 0 0;
   position: absolute;
-
-  // top: 199px;
   left: calc(50% - 145px);
   z-index: 1;
 

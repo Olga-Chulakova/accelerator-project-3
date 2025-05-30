@@ -8,6 +8,8 @@
 .header__logo {
   grid-column: 1 / 2;
   grid-row: 1 / 2;
+  position: relative;
+  z-index: 5;
 }
 
 .header__button {
