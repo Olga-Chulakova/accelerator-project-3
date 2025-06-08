@@ -1,14 +1,18 @@
 import Swiper from 'swiper';
-import {Navigation, Mousewheel} from 'swiper/modules';
+import {Navigation, Mousewheel, Grid} from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 
 const newsSwiper = new Swiper ('.news__slider-wrapper', {
-  modules: [Navigation, Mousewheel],
+  modules: [Navigation, Mousewheel, Grid],
   allowTouchMove: true,
   slidesPerView: 1,
   spaceBetween: 20,
   speed: 300,
+  // grid: {
+  //   rows: 2,
+  //   fill: 'row',
+  // },
   navigation: {
     nextEl: '.news__slider-button--next',
     prevEl: '.news__slider-button--prev',

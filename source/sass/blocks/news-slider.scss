@@ -1,3 +1,7 @@
+.news-slider.swiper {
+  min-height: 590px;
+}
+
 .news-slider__list {
   padding: 0;
   margin: 0;
@@ -9,7 +13,11 @@
   display: grid;
   overflow: hidden;
   border-radius: 12px 12px 12px 0;
-  height: 330px;
+  min-height: 330px;
+}
+
+.news-slider__item.swiper-slide:nth-child(even) {
+  min-height: 240px;
 }
 
 .news-slider__image-wrapper {
@@ -19,6 +27,8 @@
 
 .news__image {
   display: block;
+  object-fit: cover;
+  height: 100%;
 }
 
 .news-slider__text-wrapper {
@@ -37,6 +47,37 @@
   border-radius: 0 12px 0 0;
   text-transform: uppercase;
   padding: 12px 12px 6px 0;
+  display: inline-block;
+  word-break: break-all;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    mask-image: url("/__spritemap#sprite-angle-view");
+    mask-repeat: no-repeat;
+    mask-position: center;
+    background-color: $color-main;
+    width: 16px;
+    height: 16px;
+    left: 0;
+    top: -16px;
+    rotate: -90deg;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    mask-image: url("/__spritemap#sprite-angle-view");
+    mask-repeat: no-repeat;
+    mask-position: center;
+    background-color: $color-main;
+    width: 16px;
+    height: 16px;
+    right: -16px;
+    bottom: 0;
+    rotate: -90deg;
+  }
 }
 
 .news-slider__subtitle-container {
@@ -45,6 +86,21 @@
   border-radius: 0 12px 0 0;
   width: 200px;
   box-sizing: border-box;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    mask-image: url("/__spritemap#sprite-angle-view");
+    mask-repeat: no-repeat;
+    mask-position: center;
+    background-color: $color-main;
+    width: 16px;
+    height: 16px;
+    right: -16px;
+    bottom: 0;
+    rotate: -90deg;
+  }
 
   @media (min-width: $tablet) {
     padding: 10px 16px 6px 0;
@@ -84,6 +140,21 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    mask-image: url("/__spritemap#sprite-angle-view");
+    mask-repeat: no-repeat;
+    mask-position: center;
+    background-color: $color-main;
+    width: 16px;
+    height: 16px;
+    right: -16px;
+    bottom: 0;
+    rotate: -90deg;
+  }
 
   @media (min-width: $tablet) {
     padding: 12px 18px 15px 0;
