@@ -1,0 +1,325 @@
+.form-request__form-group {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 11px;
+
+  @media (min-width: $tablet) {
+    gap: 12px;
+  }
+}
+
+.form-request__label {
+  margin: 0;
+  padding: 0;
+  font-weight: 400;
+  font-size: $font-size-12;
+  line-height: 14px;
+  color: rgba(240, 239, 239, 0.8);
+  text-align: left;
+
+  @media (min-width: $tablet) {
+    font-size: $font-size-14;
+    line-height: 20px;
+  }
+
+  @media (min-width: $desktop) {
+    line-height: 18px;
+  }
+}
+
+// .form-request__label--select {
+//   @media (min-width: $desktop) {
+//     margin-top: -1px;
+//   }
+// }
+
+// .form-popap__form-group:has(.form-popap__input:disabled) .form-popap__label {
+//   color: rgba(169, 175, 183, 0.6);
+// }
+
+.form-request__input {
+  height: 50px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-sizing: border-box;
+  color: $color-main;
+  background-color: $color-accent;
+  font-family: $manrope;
+  font-size: $font-size-14;
+  line-height: 14px;
+  outline: none;
+  position: relative;
+  padding: 10px 20px;
+
+  @media (min-width: $tablet) {
+    height: 50px;
+  }
+
+  &:hover,
+  &:active,
+  &:focus,
+  &:focus-visible {
+    border: 1px solid rgba(255, 255, 255, 1);
+  }
+
+  &:disabled {
+    color: rgba(169, 175, 183, 0.2);
+    border: 1px solid rgba(169, 175, 183, 0.5);
+  }
+}
+
+.form-request__comment {
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-sizing: border-box;
+  color: $color-main;
+  background-color: $color-accent;
+  outline: none;
+  padding: 10px 20px;
+  min-height: 94px;
+  resize: none;
+
+  @media (min-width: $tablet) {
+    min-height: 88px;
+  }
+
+  @media (min-width: $desktop) {
+    min-height: 90px;
+  }
+}
+
+.form-request__select {
+  font-family: $manrope;
+  width: 260px;
+  position: relative;
+  appearance: none;
+  background-image: url("/__spritemap#sprite-arrow-dropdown-white-view");
+  background-repeat: no-repeat;
+  background-position: right 20px center;
+  background-size: 15px 7px;
+  color: $color-main;
+  height: 52px;
+
+  &::after {
+    content: "";
+    display: inline-block;
+  }
+
+  @media (min-width: $tablet) {
+    width: 100%;
+  }
+}
+
+.form-request__select--active {
+  border: 1px solid rgba(255, 255, 255, 1);
+}
+
+.form-request__form-group--select {
+  position: relative;
+
+  @media (min-width: $desktop) {
+    margin-top: -2px;
+    gap: 10px;
+  }
+}
+
+.form-request__dropdown-list {
+  margin: 0;
+  list-style-type: none;
+  width: 260px;
+  border-radius: 8px;
+  padding: 1px;
+  background-color: $color-additional;
+  box-sizing: border-box;
+  position: absolute;
+  top: 82px;
+  left: 0;
+  z-index: 100;
+  display: none;
+
+  @media (min-width: $desktop) {
+    width: 100%;
+    top: 88px;
+  }
+
+  @media (min-width: $tablet) {
+    top: 85px;
+  }
+}
+
+.form-request__dropdown-list--visible {
+  display: block;
+}
+
+.form-request__dropdown-item {
+  color: $color-basis;
+  background-color: $color-additional;
+  font-size: $font-size-14;
+  line-height: 14px;
+  padding: 17px 20px;
+  box-sizing: border-box;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $color-accent;
+    color: $color-main;
+  }
+}
+
+.form-request__dropdown-item--active {
+  background-color: $color-accent;
+  color: $color-main;
+}
+
+.form-request__dropdown-item:first-child {
+  border-radius: 8px 8px 0 0;
+}
+
+.form-request__dropdown-item:last-child {
+  border-radius: 0 0 8px 8px;
+}
+
+.form-request__select option {
+  background-color: #ffffff;
+  color: $color-basis;
+  font-size: $font-size-14;
+  line-height: 14px;
+  font-weight: 400;
+  padding: 17px 20px;
+}
+
+.form-request__control-label {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.form-request__indicator {
+  width: 20px;
+  height: 20px;
+  background-color: $color-additional;
+  border-radius: 2px;
+  border: 1px solid $color-additional;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -2px;
+
+  @media (min-width: $tablet) {
+    margin-top: 0;
+  }
+}
+
+.form-request__control-input:checked + .form-request__indicator {
+  &::before {
+    content: "";
+    display: inline-block;
+    mask-image: url("/__spritemap#sprite-checked-view");
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: 10px 10px;
+    background-color: $color-accent;
+    width: 10px;
+    height: 10px;
+  }
+}
+
+.form-request__text {
+  font-weight: 400;
+  font-size: $font-size-12;
+  line-height: 14px;
+  color: $color-additional;
+  text-align: left;
+  width: 240px;
+  opacity: 0.9;
+
+  @media (min-width: $tablet) {
+    width: auto;
+    line-height: 12px;
+    margin-top: 1px;
+  }
+}
+
+.form-request__text br {
+  @media (min-width: $tablet) {
+    display: none;
+  }
+}
+
+.form-request__button {
+  min-height: 44px;
+  width: 260px;
+  font-family: $manrope;
+  font-size: $font-size-12;
+  line-height: 12px;
+  font-weight: 500;
+  color: $color-additional;
+  letter-spacing: 0.24px;
+  text-transform: uppercase;
+  padding: 0 68px 0 30px;
+  border: 1px solid $color-additional;
+  border-radius: 30px;
+  box-sizing: border-box;
+  background-color: $color-accent;
+  cursor: pointer;
+  position: relative;
+  margin-top: -2px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    background-color: $color-additional;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    top: 50%;
+    right: 4px;
+    transform: translateY(-50%);
+    z-index: 1;
+    background-position: center;
+
+    @media (min-width: $tablet) {
+      width: 46px;
+      height: 46px;
+    }
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    mask-image: url("/__spritemap#sprite-arrow-hero-view");
+    mask-repeat: no-repeat;
+    mask-size: 8px 8px;
+    mask-position: center;
+    background-color: $color-accent;
+    display: block;
+    width: 8px;
+    height: 8px;
+    top: 50%;
+    right: 17px;
+    transform: translateY(-50%);
+    z-index: 10;
+
+    @media (min-width: $tablet) {
+      right: 23px;
+    }
+  }
+
+  @media (min-width: $tablet) {
+    font-size: $font-size-14;
+    line-height: 14px;
+    letter-spacing: 0.28px;
+    width: 352px;
+    min-height: 56px;
+    padding: 0 80px 0 30px;
+    margin-top: 20px;
+  }
+
+  @media (min-width: $desktop) {
+    width: 350px;
+  }
+}

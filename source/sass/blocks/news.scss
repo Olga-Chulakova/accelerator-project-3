@@ -1,0 +1,24 @@
+.news {
+  padding: 50px 0;
+
+  @media (min-width: $desktop) {
+    padding: 60px 0;
+  }
+}
+
+.news__title {
+  text-align: center;
+  width: 290px;
+  margin: 0 auto;
+  margin-bottom: 24px;
+
+  @media (min-width: $tablet) {
+    width: 678px;
+    margin-bottom: 30px;
+  }
+
+  @media (min-width: $desktop) {
+    width: 1240px;
+    margin-bottom: 40px;
+  }
+}

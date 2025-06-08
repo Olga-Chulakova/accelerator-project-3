@@ -1,0 +1,105 @@
+.tabs {
+  overflow-x: auto; // Разрешаем горизонтальную прокрутку
+  scrollbar-width: none; // Скрываем скроллбар для Firefox
+  -ms-overflow-style: none; // Скрываем скроллбар для IE
+  margin: 0 0 24px 15px;
+
+  // Скрываем скроллбар для WebKit-браузеров
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media (min-width: $tablet) {
+    overflow-x: visible; // Отключаем прокрутку на планшетах и выше
+    margin: 0 auto 30px;
+    width: max-content;
+    max-width: 678px;
+  }
+
+  @media (min-width: $desktop) {
+    max-width: 1240px;
+    margin: 0 auto 40px;
+  }
+}
+
+.tabs__list {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: nowrap; // Запрещаем перенос элементов
+  width: max-content;
+
+  @media (min-width: $tablet) {
+    gap: 10px;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  @media (min-width: $desktop) {
+    gap: 30px;
+    justify-content: center;
+  }
+}
+
+.tabs__button {
+  position: relative;
+  font-family: $manrope;
+  font-size: $font-size-12;
+  line-height: 12px;
+  font-weight: 500;
+  letter-spacing: 0.24px;
+  border: none;
+  background-color: transparent;
+  padding: 10px 14px;
+  color: $color-accent;
+  cursor: pointer;
+  opacity: 0.6;
+  box-sizing: border-box;
+  text-transform: uppercase;
+
+  @media (min-width: $tablet) {
+    font-size: $font-size-14;
+    line-height: 14px;
+    padding: 14px 20px;
+    letter-spacing: 0.28px;
+  }
+}
+
+.tabs__button--active {
+  border: 2px solid $color-accent;
+  border-radius: 20px;
+  opacity: 1;
+}
+
+.tabs__button--general {
+  @media (min-width: $desktop) {
+    padding: 14px 33px;
+  }
+}
+
+.tabs__button--volunteer {
+  @media (min-width: $desktop) {
+    padding: 14px 3px;
+  }
+}
+
+.tabs__button--internship {
+  @media (min-width: $desktop) {
+    padding: 14px 11px;
+  }
+}
+
+.tabs__button--career {
+  @media (min-width: $desktop) {
+    padding: 14px 29px;
+  }
+}
+
+.tabs__button--travel {
+  @media (min-width: $desktop) {
+    padding: 14px 8px;
+  }
+}

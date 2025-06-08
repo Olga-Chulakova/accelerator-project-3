@@ -1,0 +1,67 @@
+.form {
+  padding: 40px 0;
+
+  @media (min-width: $tablet) {
+    padding: 50px 0;
+  }
+
+  @media (min-width: $desktop) {
+    padding: 60px 0;
+  }
+}
+
+.form__wrapper {
+  padding: 43px 0 40px;
+  box-sizing: border-box;
+  min-height: 753px;
+  background-image:
+    image-set(
+      url("../../img/form-mobile-tablet@1x.webp") type("image/webp") 1x,
+      url("../../img/form-mobile-tablet@2x.webp") type("image/webp") 2x,
+      url("../../img/form-mobile-tablet@1x.jpg") type("image/jpg") 1x,
+      url("../../img/form-mobile-tablet@2x.jpg") type("image/jpg") 2x
+    );
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  @media (min-width: $tablet) {
+    width: 652px;
+    min-height: 780px;
+    margin: 0 auto;
+    padding: 0;
+    border-radius: 16px;
+  }
+
+  @media (min-width: $desktop) {
+    width: 1240px;
+    min-height: 800px;
+    background-image:
+      image-set(
+        url("../../img/form-desktop@1x.webp") type("image/webp") 1x,
+        url("../../img/form-desktop@2x.webp") type("image/webp") 2x,
+        url("../../img/form-desktop@1x.jpg") type("image/jpg") 1x,
+        url("../../img/form-desktop@2x.jpg") type("image/jpg") 2x
+      );
+  }
+}
+
+.form__content-wrapper {
+  width: 300px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  border-radius: 16px;
+  background-color: $color-accent;
+  padding: 15px 15px 27px;
+
+  @media (min-width: $tablet) {
+    width: 442px;
+    margin: 0;
+    padding: 30px 40px 36px;
+  }
+
+  @media (min-width: $desktop) {
+    width: 490px;
+    padding: 30px 70px 40px;
+  }
+}
