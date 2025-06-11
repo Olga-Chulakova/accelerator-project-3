@@ -193,6 +193,8 @@
   flex-wrap: wrap;
   flex-direction: column;
   gap: 8px;
+  margin: 0;
+  padding: 0;
 
   @media (min-width: $tablet) {
     gap: 11px;
@@ -208,6 +210,8 @@
   color: $color-accent;
   text-transform: uppercase;
   letter-spacing: 0.12px;
+  margin: 0;
+  padding: 0;
 
   @media (min-width: $tablet) {
     font-size: 12px;
@@ -224,6 +228,7 @@
   color: $color-basis;
   opacity: 0.9;
   margin: 0;
+  padding: 0;
 
   @media (min-width: $tablet) {
     font-size: 14px;
@@ -243,6 +248,7 @@
   text-align: left;
   color: $color-accent;
   margin: 0 0 20px;
+  padding: 0;
 
   @media (min-width: $tablet) {
     font-size: 20px;
