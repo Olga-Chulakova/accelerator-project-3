@@ -49,36 +49,6 @@ function updateDesktopSlideSizes(swiper) {
   }
 }
 
-function fixGridLayout(swiper) {
-  if (swiper.params.grid && swiper.params.grid.rows > 1 && swiper.currentBreakpoint === '768') {
-    const slides = swiper.slides;
-    const wrapper = swiper.wrapperEl;
-
-    // 1. Сохраняем вертикальный отступ между строками
-    wrapper.style.gap = '0';
-    wrapper.style.rowGap = '30px';
-
-    // 2. Обнуляем margin-top только у "проблемных" слайдов
-    slides.forEach((slide, index) => {
-      const rowPosition = index % swiper.params.grid.rows;
-      if (rowPosition !== 0) {
-        slide.style.marginTop = '0';
-      }
-    });
-  } else {
-    // Сбрасываем стили, когда currentBreakpoint не равен '768'
-    const slides = swiper.slides;
-    const wrapper = swiper.wrapperEl;
-
-    wrapper.style.gap = '';
-    wrapper.style.rowGap = '20px';
-
-    slides.forEach((slide) => {
-      slide.style.marginTop = '';
-    });
-  }
-}
-
 function generateDynamicPagination(swiper) {
   const totalLis = originalSlides.length;
   const slidesPerGroup = swiper.params.slidesPerGroup;
@@ -171,7 +141,7 @@ const newsSwiper = new Swiper('.news-slider', {
     prevEl: '.news__slider-button--prev',
   },
   pagination: {
-    el: '.swiper-pagination',
+    el: '.news__pagination.swiper-pagination',
     clickable: true,
     type: 'custom',
     bulletClass: 'news__bullet',
@@ -184,7 +154,7 @@ const newsSwiper = new Swiper('.news-slider', {
     768: {
       grid: {
         rows: 2,
-        fill: 'column',
+        fill: 'row',
       },
       spaceBetween: 30,
       slidesPerView: 2,
@@ -205,21 +175,17 @@ const newsSwiper = new Swiper('.news-slider', {
 
   on: {
     init(swiper) {
-      fixGridLayout(swiper);
       updateDesktopSlideSizes(swiper);
     },
     slideChange(swiper) {
-      fixGridLayout(swiper);
       updateDesktopSlideSizes(swiper);
     },
     resize(swiper) {
-      fixGridLayout(swiper);
       updateDesktopSlideSizes(swiper);
       swiper.pagination.render();
       swiper.pagination.update();
     },
     breakpoint(swiper) {
-      fixGridLayout(swiper);
       updateDesktopSlideSizes(swiper);
     }
   },
