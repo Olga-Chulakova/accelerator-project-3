@@ -1,16 +1,15 @@
 .tabs {
-  overflow-x: auto; // Разрешаем горизонтальную прокрутку
-  scrollbar-width: none; // Скрываем скроллбар для Firefox
-  -ms-overflow-style: none; // Скрываем скроллбар для IE
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
   margin: 0 0 24px 15px;
 
-  // Скрываем скроллбар для WebKit-браузеров
   &::-webkit-scrollbar {
     display: none;
   }
 
   @media (min-width: $tablet) {
-    overflow-x: visible; // Отключаем прокрутку на планшетах и выше
+    overflow-x: visible;
     margin: 0 auto 30px;
     width: max-content;
     max-width: 678px;
@@ -29,7 +28,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  flex-wrap: nowrap; // Запрещаем перенос элементов
+  flex-wrap: nowrap;
   width: max-content;
 
   @media (min-width: $tablet) {
@@ -51,30 +50,58 @@
   line-height: 12px;
   font-weight: 500;
   letter-spacing: 0.24px;
-  border: none;
+  border-radius: 20px;
+  border: 2px solid transparent;
   background-color: transparent;
-  padding: 10px 14px;
+  padding: 11px 12px 9px;
   color: $color-accent;
   cursor: pointer;
   opacity: 0.6;
   box-sizing: border-box;
   text-transform: uppercase;
+  outline: none;
 
   @media (min-width: $tablet) {
     font-size: $font-size-14;
     line-height: 14px;
-    padding: 14px 20px;
+    padding: 14px 18px;
     letter-spacing: 0.28px;
+  }
+
+  // @media (min-width: $desktop) {
+  //   width: 120px;
+  //   padding: 14px 0;
+  // }
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &:focus,
+  &:focus-visible {
+    outline: none;
+    background-color: $color-additional;
   }
 }
 
 .tabs__button--active {
-  border: 2px solid $color-accent;
   border-radius: 20px;
+  border: 2px solid $color-accent;
   opacity: 1;
 }
 
+.tabs__button--active.tabs__button:focus,
+.tabs__button--active.tabs__button:focus-visible {
+  background-color: transparent;
+}
+
 .tabs__button--general {
+  padding: 11px 14px 9px 15px;
+
+  @media (min-width: $tablet) {
+    padding: 14px 20px;
+  }
+
   @media (min-width: $desktop) {
     padding: 14px 33px;
   }

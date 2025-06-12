@@ -225,7 +225,7 @@
   }
 
   @media (min-width: $desktop) {
-    padding: 10px 21px 4px 0;
+    padding: 12px 18px 15px 0;
   }
 }
 
@@ -233,6 +233,12 @@
   @media (min-width: $desktop) {
     width: 468px;
     padding: 12px 18px 15px 0;
+  }
+}
+
+.news-slider__item--volunteering .news-slider__slider-text {
+  @media (min-width: $desktop) {
+    width: 244px;
   }
 }
 
@@ -256,13 +262,15 @@
 .news-slider__slider-link {
   width: 30px;
   height: 30px;
-  border-radius: 50%;
+  border-radius: 44px;
   background-color: $color-accent;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: -1px;
   flex-shrink: 0;
+  outline: none;
+  transition: all 0.3s;
 
   &::after {
     content: "";
@@ -273,6 +281,39 @@
     background-color: #ffffff;
     width: 8px;
     height: 8px;
+    transition: all 0.3s;
+  }
+
+  &:hover,
+  &:active {
+    background-color: $color-additional;
+  }
+
+  &:not([disabled]):hover::after,
+  &:not([disabled]):active::after {
+    transform: rotate(45deg);
+    transition: all 0.3s;
+    background-color: $color-accent;
+  }
+
+  &:not([disabled]):active::after {
+    opacity: 0.7;
+  }
+
+  &:not([disabled]):focus::after,
+  &:not([disabled]):focus-visible::after {
+    transform: rotate(45deg);
+    transition: all 0.3s;
+  }
+
+  &[disabled] {
+    background-color: $color-disabled;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  &[disabled]::after {
+    opacity: 0.6;
   }
 }
 
@@ -287,13 +328,14 @@
 .news__slider-button.swiper-button-next {
   width: 22px;
   height: 22px;
-  border: 1px solid transparent;
   cursor: pointer;
+  border: none;
   padding: 0;
   z-index: 10;
   box-sizing: border-box;
   background-color: $color-main;
   position: relative;
+  outline: none;
 
   &::before {
     content: "";
@@ -312,6 +354,28 @@
     transition: background-color 0.2s ease-in-out;
     z-index: 1;
   }
+
+  &:active,
+  &:focus,
+  &:focus-visible {
+    background-color: $color-additional;
+    border-radius: 30px;
+    outline: none;
+  }
+
+  &:not(:disabled):hover::before,
+  &:not(:disabled):active::before {
+    opacity: 0.7;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  &:disabled::before {
+    background-color: $color-disabled;
+  }
 }
 
 .news__slider-button--prev.swiper-button-prev {
@@ -326,7 +390,7 @@
   width: 152px;
   height: 26px;
   box-sizing: border-box;
-  position: relative;
+  position: static;
 
   @media (min-width: $tablet) {
     gap: 20px;
@@ -336,12 +400,15 @@
 }
 
 .news__bullet {
-  width: 20px;
-  height: 20px;
-  text-align: center;
+  font-family: $manrope;
   line-height: 14px;
   font-size: 14px;
   font-weight: 500;
+  width: 26px;
+  height: 26px;
+  box-sizing: border-box;
+  border: 2px solid transparent;
+  text-align: center;
   color: rgba(49, 109, 194, 0.5);
   background-color: $color-main;
   padding: 0;
@@ -349,6 +416,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  outline: none;
 
   @media (min-width: $tablet) {
     width: 32px;
@@ -358,27 +426,28 @@
     font-weight: 400;
   }
 
-  // &:hover {
-  //   background-color: #d9d9d9;
-  // }
+  &:hover,
+  &:focus,
+  &:focus-visible {
+    border: 2px solid $color-accent;
+  }
 
-  // &:active {
-  //   background-color: rgba(255, 255, 255, 0.5);
-  // }
+  &:active {
+    background-color: $color-active;
+    border: 2px solid $color-active;
+    color: $color-additional;
+  }
 
-  // &:focus,
-  // &:focus-visible {
-  //   outline: 1px solid rgba(255, 255, 255, 0.5);
-  //   outline-offset: 2px;
-  // }
-
-  // &:active:not(:focus),
-  // &:active:not(:hover) {
-  //   background-color: transparent;
-  // }
+  &:disabled {
+    background-color: $color-disabled;
+    color: $color-additional;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
 }
 
 .news__bullet.news__bullet--active {
   color: $color-additional;
   background-color: $color-accent;
+  border: 1px solid $color-accent;
 }

@@ -1,5 +1,9 @@
 .news {
-  padding: 50px 0;
+  padding: 51px 0 50px;
+
+  @media (min-width: $tablet) {
+    padding: 50px 0;
+  }
 
   @media (min-width: $desktop) {
     padding: 60px 0;
@@ -10,7 +14,7 @@
   text-align: center;
   width: 290px;
   margin: 0 auto;
-  margin-bottom: 24px;
+  margin-bottom: 23px;
 
   @media (min-width: $tablet) {
     width: 678px;

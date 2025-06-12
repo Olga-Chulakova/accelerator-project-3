@@ -108,6 +108,13 @@ function generateDynamicPagination(swiper) {
   startIndex = Math.max(0, startIndex); // Не меньше 0
   endIndex = Math.min(endIndex, totalSlides); // Не больше totalSlides
 
+  // Обрезаем endIndex для десктопа
+  if (isDesktop) {
+    const lastVisibleSlide = totalSlides - 2; // Индекс последнего слайда, который может быть активным
+    endIndex = Math.min(endIndex, lastVisibleSlide); // Обрезаем endIndex, если он больше
+    startIndex = Math.max(0, endIndex - 4); // Корректируем startIndex, чтобы всегда было 4 кнопки
+  }
+
   for (let i = startIndex; i < endIndex; i++) {
     const slideNumber = i + 1;
     const isActive = i === currentLogicalSlide ? ' news__bullet--active' : ''; // Используем currentLogicalSlide
@@ -120,11 +127,30 @@ function generateDynamicPagination(swiper) {
 
 function setupPaginationClickHandler(swiperInstance) {
   const paginationContainer = document.querySelector('.news__pagination');
+
   paginationContainer.addEventListener('click', (event) => {
     if (event.target.classList.contains('news__bullet')) {
       const slideIndex = parseInt(event.target.dataset.slideIndex, 10);
-      swiperInstance.slideTo(slideIndex); // Используем swiperInstance (который будет newsSwiper)
+      const realIndex = slideIndex * swiperInstance.params.slidesPerGroup; // Вычисляем реальный индекс
+      swiperInstance.slideTo(realIndex);
       event.preventDefault();
+
+      // Устанавливаем фокус на активную кнопку после переключения слайда
+      event.target.focus();
+    }
+  });
+
+  // Обработчик события slideChange для управления фокусом при смене слайда
+  swiperInstance.on('slideChange', () => {
+    // Находим индекс текущего слайда
+    const currentSlideIndex = Math.floor(swiperInstance.realIndex / swiperInstance.params.slidesPerGroup);
+
+    // Находим кнопку пагинации, соответствующую текущему слайду
+    const activePaginationButton = paginationContainer.querySelector(`[data-slide-index="${currentSlideIndex}"]`);
+
+    // Если кнопка найдена, устанавливаем на нее фокус
+    if (activePaginationButton) {
+      activePaginationButton.focus();
     }
   });
 }
@@ -189,7 +215,6 @@ const newsSwiper = new Swiper('.news-slider', {
     resize(swiper) {
       fixGridLayout(swiper);
       updateDesktopSlideSizes(swiper);
-      // Пересоздаем пагинацию при ресайзе
       swiper.pagination.render();
       swiper.pagination.update();
     },
