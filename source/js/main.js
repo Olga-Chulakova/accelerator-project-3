@@ -1,12 +1,13 @@
-// import './hero-swiper.js';
-// import './open-menu.js';
-// import './popap.js';
-// import './programs-swiper.js';
+import './hero-swiper.js';
+import './open-menu.js';
+import './popap-opened.js';
+import './popap-validity.js';
+import './popap-select.js';
+import './programs-swiper.js';
 import './price-tab.js';
 import './news-slider.js';
-// import './faq-accordeon.js';
-// import './faq-control-height.js';
+import './faq-accordeon.js';
+import './faq-control-height.js';
 import './reviews-slider.js';
-// import './form-select.js';
-// import './input-phone.js';
-
+import './form-validity.js';
+import './form-select.js';

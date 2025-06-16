@@ -92,6 +92,48 @@
     line-height: 18px;
     order: 2;
   }
+
+  &:not([disabled]):not(:focus):hover {
+    color: $color-accent;
+    opacity: 0.7;
+  }
+
+  &:not([disabled]):not(:focus):hover::after {
+    background-color: $color-accent;
+    opacity: 0.7;
+  }
+
+  &:focus,
+  &:focus-visible {
+    color: $color-accent;
+    opacity: 1;
+  }
+
+  &:focus::after,
+  &:focus-visible::after {
+    background-color: $color-accent;
+    opacity: 1;
+  }
+
+  &:active {
+    color: $color-active;
+    opacity: 1;
+  }
+
+  &:active::after {
+    background-color: $color-active;
+    opacity: 1;
+  }
+
+  &[disabled] {
+    color: $color-disabled;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  &[disabled]::after {
+    background-color: $color-disabled;
+  }
 }
 
 .main-footer__copyright {

@@ -10,7 +10,7 @@ const reviewsSwiper = new Swiper ('.reviews__slider-wrapper', {
   spaceBetween: 15,
   speed: 300,
   scrollbar: {
-    el: '.swiper-scrollbar',
+    el: '.reviews__scrollbar.swiper-scrollbar',
     draggable: true,
     dragSize: 326 | 'auto',
   },
@@ -29,7 +29,6 @@ const reviewsSwiper = new Swiper ('.reviews__slider-wrapper', {
       },
       slidesPerView: 2,
       spaceBetween: 32,
-      allowTouchMove: false,
     }
   },
   simulateTouch: true,

@@ -2,16 +2,15 @@ import Swiper from 'swiper';
 import {Navigation, Pagination, Mousewheel, Grid} from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
-const sliderWrapper = document.querySelector('.swiper-wrapper');
+const sliderWrapper = document.querySelector('.news-slider__list');
 const originalSlides = Array.from(sliderWrapper.children);
 
 let isDesktop = window.innerWidth >= 1440;
 
 function updateDesktopSlideSizes(swiper) {
   const currentIsDesktop = window.innerWidth >= 1440;
-  const spaceBetween = 32; // отступ для десктопа, как в breakpoints 1440
+  const spaceBetween = 32;
 
-  // При переходе с десктопа на меньший экран — сбрасываем стили и трансформацию
   if (isDesktop && !currentIsDesktop) {
     swiper.slides.forEach((slide) => {
       slide.style.width = '';
@@ -26,7 +25,6 @@ function updateDesktopSlideSizes(swiper) {
     const slides = swiper.slides;
     const activeIndex = swiper.activeIndex;
 
-    // Устанавливаем ширину и класс активного слайда
     slides.forEach((slide) => {
       slide.style.width = '286px';
       slide.classList.remove('swiper-slide-active');
@@ -37,13 +35,11 @@ function updateDesktopSlideSizes(swiper) {
       slides[activeIndex].classList.add('swiper-slide-active');
     }
 
-    // Рассчитываем смещение контейнера вручную, учитывая spaceBetween
     let offset = 0;
     for (let i = 0; i < activeIndex; i++) {
       offset += 286 + spaceBetween;
     }
 
-    // Применяем трансформацию, чтобы активный слайд был прижат к левому краю
     swiper.wrapperEl.style.transition = 'transform 0.3s ease';
     swiper.wrapperEl.style.transform = `translate3d(${-offset}px, 0, 0)`;
   }
@@ -62,32 +58,29 @@ function generateDynamicPagination(swiper) {
   let endIndex = visibleButtons;
 
   if (totalSlides > 4) {
-    // Общая логика для слайдов, начиная с 4 и до предпоследнего
     if (currentLogicalSlide >= 3 && currentLogicalSlide < totalSlides - 1) {
-      startIndex = currentLogicalSlide - 2; // Два слайда назад
-      endIndex = currentLogicalSlide + 2; // Один слайд вперед, плюс текущий и предыдущий
-      endIndex = Math.min(endIndex, totalSlides); // Убедимся, что не выходим за границы
+      startIndex = currentLogicalSlide - 2;
+      endIndex = currentLogicalSlide + 2;
+      endIndex = Math.min(endIndex, totalSlides);
     }
-    //Обработка последнего слайда
     if (currentLogicalSlide === totalSlides - 1) {
       startIndex = totalSlides - 4;
       endIndex = totalSlides;
     }
   }
 
-  startIndex = Math.max(0, startIndex); // Не меньше 0
-  endIndex = Math.min(endIndex, totalSlides); // Не больше totalSlides
+  startIndex = Math.max(0, startIndex);
+  endIndex = Math.min(endIndex, totalSlides);
 
-  // Обрезаем endIndex для десктопа
   if (isDesktop) {
-    const lastVisibleSlide = totalSlides - 2; // Индекс последнего слайда, который может быть активным
-    endIndex = Math.min(endIndex, lastVisibleSlide); // Обрезаем endIndex, если он больше
-    startIndex = Math.max(0, endIndex - 4); // Корректируем startIndex, чтобы всегда было 4 кнопки
+    const lastVisibleSlide = totalSlides - 2;
+    endIndex = Math.min(endIndex, lastVisibleSlide);
+    startIndex = Math.max(0, endIndex - 4);
   }
 
   for (let i = startIndex; i < endIndex; i++) {
     const slideNumber = i + 1;
-    const isActive = i === currentLogicalSlide ? ' news__bullet--active' : ''; // Используем currentLogicalSlide
+    const isActive = i === currentLogicalSlide ? ' news__bullet--active' : '';
     const slideIndex = i;
     buttonsHTML += `<button class="news__bullet${isActive}" type="button" data-slide-index="${slideIndex}" data-slide-number="${slideNumber}">${slideNumber}</button>`;
   }
@@ -101,24 +94,18 @@ function setupPaginationClickHandler(swiperInstance) {
   paginationContainer.addEventListener('click', (event) => {
     if (event.target.classList.contains('news__bullet')) {
       const slideIndex = parseInt(event.target.dataset.slideIndex, 10);
-      const realIndex = slideIndex * swiperInstance.params.slidesPerGroup; // Вычисляем реальный индекс
+      const realIndex = slideIndex * swiperInstance.params.slidesPerGroup;
       swiperInstance.slideTo(realIndex);
       event.preventDefault();
-
-      // Устанавливаем фокус на активную кнопку после переключения слайда
       event.target.focus();
     }
   });
 
-  // Обработчик события slideChange для управления фокусом при смене слайда
   swiperInstance.on('slideChange', () => {
-    // Находим индекс текущего слайда
     const currentSlideIndex = Math.floor(swiperInstance.realIndex / swiperInstance.params.slidesPerGroup);
 
-    // Находим кнопку пагинации, соответствующую текущему слайду
     const activePaginationButton = paginationContainer.querySelector(`[data-slide-index="${currentSlideIndex}"]`);
 
-    // Если кнопка найдена, устанавливаем на нее фокус
     if (activePaginationButton) {
       activePaginationButton.focus();
     }

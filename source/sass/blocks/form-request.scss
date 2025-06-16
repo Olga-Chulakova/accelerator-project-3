@@ -17,6 +17,7 @@
   line-height: 14px;
   color: rgba(240, 239, 239, 0.8);
   text-align: left;
+  opacity: 0.8;
 
   @media (min-width: $tablet) {
     font-size: $font-size-14;
@@ -27,16 +28,6 @@
     line-height: 18px;
   }
 }
-
-// .form-request__label--select {
-//   @media (min-width: $desktop) {
-//     margin-top: -1px;
-//   }
-// }
-
-// .form-popap__form-group:has(.form-popap__input:disabled) .form-popap__label {
-//   color: rgba(169, 175, 183, 0.6);
-// }
 
 .form-request__input {
   height: 50px;
@@ -56,17 +47,31 @@
     height: 50px;
   }
 
-  &:hover,
-  &:active,
-  &:focus,
-  &:focus-visible {
+  &:not(:disabled):hover,
+  &:not(:disabled):active,
+  &:not(:disabled):focus,
+  &:not(:disabled):focus-visible {
     border: 1px solid rgba(255, 255, 255, 1);
   }
 
   &:disabled {
-    color: rgba(169, 175, 183, 0.2);
-    border: 1px solid rgba(169, 175, 183, 0.5);
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.4);
   }
+}
+
+.form-request__form-group:hover .form-request__label,
+.form-request__form-group:focus-within .form-request__label {
+  opacity: 1;
+}
+
+.form-request__form-group:has(.form-request__input:disabled) .form-request__label {
+  color: rgba(240, 239, 233, 0.6);
+}
+
+.form-request__form-group.invalid .form-request__input {
+  background-color: rgba(255, 94, 102, 0.2);
+  border: 1px solid rgba(255, 94, 102, 1);
 }
 
 .form-request__comment {
@@ -138,13 +143,9 @@
   z-index: 100;
   display: none;
 
-  @media (min-width: $desktop) {
+  @media (min-width: $tablet) {
     width: 100%;
     top: 88px;
-  }
-
-  @media (min-width: $tablet) {
-    top: 85px;
   }
 }
 
@@ -158,12 +159,19 @@
   font-size: $font-size-14;
   line-height: 14px;
   padding: 17px 20px;
+  height: 48px;
   box-sizing: border-box;
   cursor: pointer;
 
   &:hover {
+    color: $color-accent;
+  }
+
+  &:active,
+  &:focus,
+  &:focus-visible {
     background-color: $color-accent;
-    color: $color-main;
+    color: $color-additional;
   }
 }
 
@@ -178,15 +186,6 @@
 
 .form-request__dropdown-item:last-child {
   border-radius: 0 0 8px 8px;
-}
-
-.form-request__select option {
-  background-color: #ffffff;
-  color: $color-basis;
-  font-size: $font-size-14;
-  line-height: 14px;
-  font-weight: 400;
-  padding: 17px 20px;
 }
 
 .form-request__control-label {
@@ -208,23 +207,75 @@
   align-items: center;
   justify-content: center;
   margin-top: -2px;
+  z-index: 1;
+  position: relative;
+  padding: 0;
+  transition: background-color 0.2s, border-color 0.2s;
 
   @media (min-width: $tablet) {
     margin-top: 0;
   }
 }
 
+.form-request__control-input:checked + .form-request__indicator::before {
+  content: "";
+  display: inline-block;
+  mask-image: url("/__spritemap#sprite-checked-view");
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: 10px 10px;
+  background-color: $color-accent;
+  width: 10px;
+  height: 10px;
+}
+
+.form-request__control-input:not(:checked):not(:disabled):hover + .form-request__indicator,
+.form-request__control-input:not(:checked):not(:disabled):focus-visible + .form-request__indicator {
+  background-color: $color-accent;
+  border-color: $color-additional;
+}
+
+.form-request__control-input:not(:checked):disabled + .form-request__indicator {
+  background-color: #a9afb3;
+  border-color: #a9afb3;
+}
+
+.form-request__checkbox.invalid .form-request__control-input:not(:checked):not(:disabled) + .form-request__indicator {
+  background-color: rgba(255, 94, 102, 0.2);
+  border-color: #ff5e66;
+  opacity: 0.7;
+}
+
 .form-request__control-input:checked + .form-request__indicator {
+  background-color: $color-additional;
+  border-color: $color-additional;
+}
+
+.form-request__control-input:checked:not(:disabled):active + .form-request__indicator {
+  background-color: $color-additional;
+  border-color: $color-additional;
+
   &::before {
-    content: "";
-    display: inline-block;
-    mask-image: url("/__spritemap#sprite-checked-view");
-    mask-repeat: no-repeat;
-    mask-position: center;
-    mask-size: 10px 10px;
     background-color: $color-accent;
-    width: 10px;
-    height: 10px;
+  }
+}
+
+.form-request__control-input:checked:not(:disabled):hover + .form-request__indicator,
+.form-request__control-input:checked:not(:disabled):focus-visible + .form-request__indicator {
+  background-color: $color-accent;
+  border-color: $color-additional;
+
+  &::before {
+    background-color: $color-additional;
+  }
+}
+
+.form-request__control-input:checked:disabled + .form-request__indicator {
+  background-color: $color-disabled;
+  border-color: $color-disabled;
+
+  &::before {
+    background-color: rgba(255, 255, 255, 0.7);
   }
 }
 
@@ -268,6 +319,12 @@
   cursor: pointer;
   position: relative;
   margin-top: -2px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  transition: all 0.3s;
+  outline: none;
 
   &::before {
     content: "";
@@ -291,7 +348,7 @@
   &::after {
     content: "";
     position: absolute;
-    mask-image: url("/__spritemap#sprite-arrow-hero-view");
+    mask-image: url("/__spritemap#sprite-arrow-btn-view");
     mask-repeat: no-repeat;
     mask-size: 8px 8px;
     mask-position: center;
@@ -299,10 +356,9 @@
     display: block;
     width: 8px;
     height: 8px;
-    top: 50%;
     right: 17px;
-    transform: translateY(-50%);
     z-index: 10;
+    transition: all 0.3s;
 
     @media (min-width: $tablet) {
       right: 23px;
@@ -321,5 +377,54 @@
 
   @media (min-width: $desktop) {
     width: 350px;
+  }
+
+  &:not(:disabled):hover,
+  &:not(:disabled):active {
+    background-color: $color-additional;
+    color: $color-accent;
+    transition: all 0.3s;
+  }
+
+  &:not(:disabled):active {
+    color: rgba(49, 109, 194, 0.7);
+  }
+
+  &:not(:disabled):hover::before,
+  &:not(:disabled):active::before {
+    background-color: $color-accent;
+  }
+
+  &:not(:disabled):hover::after,
+  &:not(:disabled):active::after {
+    background-color: $color-additional;
+    transform: rotate(45deg);
+    transition: all 0.3s;
+  }
+
+  &:active::after {
+    opacity: 0.7;
+  }
+
+  &:not(:disabled):focus::after,
+  &:not(:disabled):focus-visible::after {
+    transform: rotate(45deg);
+    transition: all 0.3s;
+  }
+
+  &:disabled {
+    border-color: $color-disabled;
+    color: $color-disabled;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  &:disabled::before {
+    background-color: $color-disabled;
+  }
+
+  &:disabled::after {
+    background-color: $color-additional;
+    opacity: 0.6;
   }
 }

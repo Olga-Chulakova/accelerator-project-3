@@ -13,7 +13,6 @@ function toggleMenu() {
 
 button.addEventListener('click', toggleMenu);
 
-// Закрытие меню при клике на оверлей
 overlay.addEventListener('click', () => {
   if (navMain.classList.contains('main-nav--opened')) {
     toggleMenu();
@@ -27,13 +26,11 @@ linkDrop.forEach((link) => {
     const submenu = parentItem.querySelector('.menu__submenu');
 
     if (parentItem.classList.contains('menu__item--open')) {
-      // закрываем
       submenu.style.maxHeight = '0';
       submenu.style.opacity = '0';
       parentItem.classList.remove('menu__item--open');
     } else {
-      // открываем
-      const height = `${submenu.scrollHeight }px`; // вычисляем реальную высоту
+      const height = `${submenu.scrollHeight }px`;
       submenu.style.maxHeight = height;
       submenu.style.opacity = '1';
       parentItem.classList.add('menu__item--open');

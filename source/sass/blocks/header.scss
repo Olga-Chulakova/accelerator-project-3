@@ -46,6 +46,7 @@
     transform: translateY(-50%);
     z-index: 1;
     background-position: center;
+    transition: all 0.3s;
   }
 
   &::after {
@@ -68,6 +69,20 @@
   @media (min-width: $tablet) {
     min-height: 54px;
     padding: 19px 68px 19px 20px;
+  }
+
+  &:hover {
+    background-color: $color-accent;
+    color: $color-additional;
+    transition: all 0.3s;
+  }
+
+  &:hover::before {
+    background-color: $color-additional;
+  }
+
+  &:hover::after {
+    background-color: $color-accent;
   }
 }
 

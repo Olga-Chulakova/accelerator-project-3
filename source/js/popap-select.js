@@ -1,18 +1,18 @@
-const inputSelect = document.querySelector('.form-request__select');
-const dropDownList = document.querySelector('.form-request__dropdown-list');
-const dropDownItems = dropDownList.querySelectorAll('.form-request__dropdown-item');
+const inputSelect = document.querySelector('.form-popap__select');
+const dropDownList = document.querySelector('.form-popap__dropdown-list');
+const dropDownItems = dropDownList.querySelectorAll('.form-popap__dropdown-item');
 
 let currentSelectedIndex = -1;
 
 inputSelect.addEventListener('click', () => {
-  const isOpen = dropDownList.classList.contains('form-request__dropdown-list--visible');
+  const isOpen = dropDownList.classList.contains('form-popap__dropdown-list--visible');
 
   if (isOpen) {
-    dropDownList.classList.remove('form-request__dropdown-list--visible');
-    inputSelect.classList.remove('form-request__select--active');
+    dropDownList.classList.remove('form-popap__dropdown-list--visible');
+    inputSelect.classList.remove('form-popap__select--active');
   } else {
-    dropDownList.classList.add('form-request__dropdown-list--visible');
-    inputSelect.classList.add('form-request__select--active');
+    dropDownList.classList.add('form-popap__dropdown-list--visible');
+    inputSelect.classList.add('form-popap__select--active');
 
     currentSelectedIndex = -1;
     removeAllActiveClasses();
@@ -31,23 +31,23 @@ dropDownItems.forEach((item, index) => {
 
     currentSelectedIndex = index;
 
-    dropDownList.classList.remove('form-request__dropdown-list--visible');
-    inputSelect.classList.remove('form-request__select--active');
+    dropDownList.classList.remove('form-popap__dropdown-list--visible');
+    inputSelect.classList.remove('form-popap__select--active');
     inputSelect.focus();
   });
 });
 
 document.addEventListener('click', (e) => {
   if (e.target !== inputSelect && !dropDownList.contains(e.target)) {
-    inputSelect.classList.remove('form-request__select--active');
-    dropDownList.classList.remove('form-request__dropdown-list--visible');
+    inputSelect.classList.remove('form-popap__select--active');
+    dropDownList.classList.remove('form-popap__dropdown-list--visible');
   }
 });
 
 inputSelect.addEventListener('keydown', (e) => {
   if (e.key === 'Tab' || e.key === 'Escape') {
-    inputSelect.classList.remove('form-request__select--active');
-    dropDownList.classList.remove('form-request__dropdown-list--visible');
+    inputSelect.classList.remove('form-popap__select--active');
+    dropDownList.classList.remove('form-popap__dropdown-list--visible');
   }
 });
 
@@ -55,9 +55,9 @@ inputSelect.addEventListener('keydown', (e) => {
   if (e.key === 'Enter') {
     e.preventDefault();
 
-    if (!dropDownList.classList.contains('form-request__dropdown-list--visible')) {
-      dropDownList.classList.add('form-request__dropdown-list--visible');
-      inputSelect.classList.add('form-request__select--active');
+    if (!dropDownList.classList.contains('form-popap__dropdown-list--visible')) {
+      dropDownList.classList.add('form-popap__dropdown-list--visible');
+      inputSelect.classList.add('form-popap__select--active');
       currentSelectedIndex = -1;
       removeAllActiveClasses();
     } else if (currentSelectedIndex >= 0) {
@@ -67,7 +67,7 @@ inputSelect.addEventListener('keydown', (e) => {
 });
 
 inputSelect.addEventListener('keydown', (e) => {
-  if (!dropDownList.classList.contains('form-request__dropdown-list--visible')) {
+  if (!dropDownList.classList.contains('form-popap__dropdown-list--visible')) {
     return;
   }
 
@@ -95,13 +95,13 @@ function moveSelection(direction) {
     }
   }
 
-  dropDownItems[currentSelectedIndex].classList.add('form-request__dropdown-item--active');
+  dropDownItems[currentSelectedIndex].classList.add('form-popap__dropdown-item--active');
 
   dropDownItems[currentSelectedIndex].scrollIntoView({ block: 'nearest' });
 }
 
 function removeAllActiveClasses() {
   dropDownItems.forEach((item) => {
-    item.classList.remove('form-request__dropdown-item--active');
+    item.classList.remove('form-popap__dropdown-item--active');
   });
 }

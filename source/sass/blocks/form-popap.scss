@@ -9,13 +9,6 @@
     gap: 12px;
     margin-bottom: 20px;
   }
-
-  &:hover,
-  &:focus-within {
-    .form-popap__label {
-      color: rgba(72, 72, 72, 1);
-    }
-  }
 }
 
 .form-popap__label {
@@ -36,10 +29,6 @@
   }
 }
 
-.form-popap__form-group:has(.form-popap__input:disabled) .form-popap__label {
-  color: rgba(169, 175, 183, 0.6);
-}
-
 .form-popap__input {
   height: 44px;
   border-radius: 8px;
@@ -57,17 +46,37 @@
     height: 50px;
   }
 
-  &:hover,
-  &:active,
-  &:focus,
-  &:focus-visible {
+
+  &:not(:disabled):hover,
+  &:not(:disabled):active,
+  &:not(:disabled):focus,
+  &:not(:disabled):focus-visible {
     border: 1px solid rgba(72, 72, 72, 1);
   }
 
   &:disabled {
-    color: rgba(169, 175, 183, 0.2);
+    background-color: rgba(169, 175, 183, 0.2);
     border: 1px solid rgba(169, 175, 183, 0.5);
   }
+}
+
+.form-popap__form-group:hover .form-popap__label,
+.form-popap__form-group:focus-within .form-popap__label {
+  opacity: 1;
+  color: rgba(72, 72, 72, 1);
+}
+
+.form-popap__form-group:has(.form-popap__input:disabled) .form-popap__label {
+  color: rgba(169, 175, 183, 0.6);
+}
+
+.form-popap__form-group.invalid .form-popap__input {
+  background-color: rgba(255, 94, 102, 0.2);
+  border: 1px solid rgba(255, 94, 102, 1);
+}
+
+.form-popap__form-group--select {
+  position: relative;
 }
 
 .form-popap__select {
@@ -77,13 +86,71 @@
   background-image: url("/__spritemap#sprite-arrow-dropdown-view");
   background-repeat: no-repeat;
   background-position: right 20px center;
-  background-size: 16px 16px;
+  background-size: 15px 7px;
 }
 
-.form-popap__select-hidden {
+.form-popap__select--active {
+  border: 1px solid rgba(72, 72, 72, 1);
+}
+
+.form-popap__dropdown-list {
+  margin: 0;
+  list-style-type: none;
+  width: 260px;
+  border-radius: 8px;
+  padding: 1px;
+  background-color: $color-additional;
+  box-sizing: border-box;
+  position: absolute;
+  top: 82px;
+  left: 0;
+  z-index: 100;
   display: none;
+
+  @media (min-width: $tablet) {
+    width: 100%;
+    top: 88px;
+  }
 }
 
+.form-popap__dropdown-list--visible {
+  display: block;
+}
+
+.form-popap__dropdown-item {
+  color: $color-basis;
+  background-color: $color-additional;
+  font-size: $font-size-14;
+  line-height: 14px;
+  padding: 17px 20px;
+  height: 48px;
+  box-sizing: border-box;
+  cursor: pointer;
+
+  &:hover {
+    color: $color-accent;
+  }
+
+  &:active,
+  &:focus,
+  &:focus-visible {
+    background-color: $color-accent;
+    color: $color-additional;
+  }
+}
+
+.form-popap__dropdown-item--active {
+  background-color: $color-accent;
+  color: $color-main;
+}
+
+.form-popap__dropdown-item:first-child {
+  border-radius: 8px 8px 0 0;
+}
+
+.form-popap__dropdown-item:last-child {
+  border-radius: 0 0 8px 8px;
+}
 
 .form-popap__checkbox {
   margin-bottom: 25px;
@@ -107,19 +174,70 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  padding: 0;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.form-popap__control-input:checked + .form-popap__indicator::before {
+  content: "";
+  display: inline-block;
+  mask-image: url("/__spritemap#sprite-checked-view");
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: 10px 10px;
+  background-color: $color-additional;
+  width: 10px;
+  height: 10px;
+}
+
+.form-popap__control-input:not(:checked):not(:disabled):hover + .form-popap__indicator,
+.form-popap__control-input:not(:checked):not(:disabled):focus-visible + .form-popap__indicator {
+  background-color: $color-additional;
+  border-color: $color-accent;
+}
+
+.form-popap__control-input:not(:checked):disabled + .form-popap__indicator {
+  background-color: #a9afb3;
+  border-color: #a9afb3;
+}
+
+.form-popap__checkbox.invalid .form-popap__control-input:not(:checked):not(:disabled) + .form-popap__indicator {
+  background-color: rgba(255, 94, 102, 0.2);
+  border-color: #ff5e66;
+  opacity: 0.7;
 }
 
 .form-popap__control-input:checked + .form-popap__indicator {
+  background-color: $color-accent;
+  border-color: $color-accent;
+}
+
+.form-popap__control-input:checked:not(:disabled):active + .form-popap__indicator {
+  background-color: $color-accent;
+  border-color: $color-accent;
+
   &::before {
-    content: "";
-    display: inline-block;
-    mask-image: url("/__spritemap#sprite-checked-view");
-    mask-repeat: no-repeat;
-    mask-position: center;
-    mask-size: 10px 10px;
     background-color: $color-additional;
-    width: 10px;
-    height: 10px;
+  }
+}
+
+.form-popap__control-input:checked:not(:disabled):hover + .form-popap__indicator,
+.form-popap__control-input:checked:not(:disabled):focus-visible + .form-popap__indicator {
+  background-color: $color-additional;
+  border-color: $color-accent;
+
+  &::before {
+    background-color: $color-accent;
+  }
+}
+
+.form-popap__control-input:checked:disabled + .form-popap__indicator {
+  background-color: $color-disabled;
+  border-color: $color-disabled;
+
+  &::before {
+    background-color: rgba(255, 255, 255, 0.7);
   }
 }
 
@@ -140,7 +258,8 @@
 
 .form-popap__button {
   min-height: 42px;
-  width: 100%;
+  width: 260px;
+  font-family: $manrope;
   font-weight: 500;
   font-size: $font-size-12;
   line-height: 12px;
@@ -154,8 +273,14 @@
   background-color: $color-additional;
   cursor: pointer;
   position: relative;
-  margin: 0 auto;
-  display: block;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  transition: all 0.3s;
+  outline: none;
+  word-wrap: break-word;
+
 
   &::before {
     content: "";
@@ -179,18 +304,17 @@
   &::after {
     content: "";
     position: absolute;
-    mask-image: url("/__spritemap#sprite-arrow-hero-view");
+    mask-image: url("/__spritemap#sprite-arrow-btn-view");
     mask-repeat: no-repeat;
     mask-size: 8px 8px;
     mask-position: center;
-    background-color: #ffffff;
+    background-color: $color-additional;
     display: block;
     width: 8px;
     height: 8px;
-    top: 50%;
     right: 17px;
-    transform: translateY(-50%);
     z-index: 10;
+    transition: all 0.3s;
 
     @media (min-width: $tablet) {
       right: 23px;
@@ -198,8 +322,60 @@
   }
 
   @media (min-width: $tablet) {
+    font-size: $font-size-14;
+    line-height: 14px;
     width: 194px;
     min-height: 54px;
     padding: 0 80px 0 30px;
+    margin: 0 auto;
+  }
+
+  &:not(:disabled):hover,
+  &:not(:disabled):active {
+    background-color: $color-accent;
+    color: $color-additional;
+    transition: all 0.3s;
+  }
+
+  &:not(:disabled):active {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  &:not(:disabled):hover::before,
+  &:not(:disabled):active::before {
+    background-color: $color-additional;
+  }
+
+  &:not(:disabled):hover::after,
+  &:not(:disabled):active::after {
+    background-color: $color-accent;
+    transform: rotate(45deg);
+    transition: all 0.3s;
+  }
+
+  &:active::after {
+    opacity: 0.7;
+  }
+
+  &:not(:disabled):focus::after,
+  &:not(:disabled):focus-visible::after {
+    transform: rotate(45deg);
+    transition: all 0.3s;
+  }
+
+  &:disabled {
+    border-color: $color-disabled;
+    color: $color-disabled;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  &:disabled::before {
+    background-color: $color-disabled;
+  }
+
+  &:disabled::after {
+    background-color: $color-additional;
+    opacity: 0.6;
   }
 }

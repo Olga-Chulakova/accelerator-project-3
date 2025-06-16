@@ -27,7 +27,7 @@
 
 .news-slider__item.swiper-slide {
   position: relative;
-  display: flex; // Меняем grid на flex
+  display: flex;
   flex-direction: column;
   overflow: hidden;
   border-radius: 12px 12px 12px 0;
@@ -35,19 +35,19 @@
   width: 290px;
 
   &:nth-child(odd) {
-    order: 1; // Нечетные слайды - первый ряд
+    order: 1;
     min-height: 330px;
   }
 
   &:nth-child(even) {
-    order: 2; // Четные слайды - второй ряд
+    order: 2;
     min-height: 240px;
   }
 
   @media (min-width: $tablet) {
     &:nth-child(odd),
     &:nth-child(even) {
-      order: initial; // Сбрасываем порядок на планшете+
+      order: initial;
       min-height: 350px;
     }
   }
@@ -59,7 +59,7 @@
     }
 
     width: 286px;
-    transition: width 0.3s ease; // Плавное изменение ширины
+    transition: width 0.3s ease;
     flex-shrink: 0;
   }
 }
@@ -71,7 +71,7 @@
 }
 
 .news-slider__image-wrapper {
-  position: absolute; // Абсолютное позиционирование
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -82,13 +82,13 @@
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover; // Важно: кадрирование с сохранением пропорций
+  object-fit: cover;
 }
 
 .news-slider__text-wrapper {
-  position: relative; // Относительное позиционирование
-  margin-top: auto; // Прижимаем текст к низу
-  z-index: 2; // Текст поверх изображения
+  position: relative;
+  margin-top: auto;
+  z-index: 2;
 }
 
 .news-slider__date {

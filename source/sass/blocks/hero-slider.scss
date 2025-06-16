@@ -30,10 +30,6 @@
   @media (min-width: $desktop) {
     min-height: 800px;
   }
-
-  // @media (width >= 1800px) {
-  //   height: 1400px;
-  // }
 }
 
 .hero-slider__image-wrapper {
@@ -78,6 +74,96 @@
   @media (min-width: $desktop) {
     width: 968px;
     left: -136px;
+  }
+}
+
+.hero-slider__pagination-wrapper {
+  width: 80px;
+  height: 28px;
+  background-color: $color-additional;
+  border-radius: 12px 12px 0 0;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &::after {
+    content: "";
+    position: absolute;
+    background-image: url("/__spritemap#sprite-angle-view");
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 10px;
+    height: 10px;
+    right: -10px;
+    bottom: 0;
+    rotate: -90deg;
+
+    @media (min-width: $tablet) {
+      width: 20px;
+      height: 20px;
+      right: -20px;
+    }
+  }
+
+  @media (min-width: $tablet) {
+    width: 100px;
+    height: 40px;
+    border-radius: 20px 20px 0 0;
+  }
+}
+
+.hero-slider__pagination.pagination-clone.swiper-pagination-bullets {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 12px;
+  z-index: 1;
+  position: static;
+}
+
+.hero-slider__bullet {
+  width: 8px;
+  height: 8px;
+  display: block;
+  border-radius: 100%;
+  background-color: transparent;
+  border: 2px solid $color-accent;
+  box-sizing: border-box;
+  position: relative;
+  padding: 0;
+  transition: background-color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+
+  @media (min-width: $tablet) {
+    width: 12px;
+    height: 12px;
+  }
+
+  &:hover {
+    opacity: 0.7;
+    background-color: $color-accent;
+    border: 2px solid $color-additional;
+  }
+
+  &:active {
+    background-color: $color-active;
+  }
+
+  &:focus,
+  &:focus-visible {
+    background-color: $color-accent;
+    outline: none;
+  }
+}
+
+.hero-slider__bullet.hero-slider__bullet--active {
+  background-color: $color-active;
+  border: none;
+
+  &:hover {
+    opacity: 1;
+    background-color: $color-active;
   }
 }
 
@@ -188,7 +274,7 @@
   }
 }
 
-.hero-slider__button-wrapper {
+.hero-slider__link-wrapper {
   width: 184px;
   min-height: 64px;
   background-color: $color-additional;
@@ -224,8 +310,9 @@
   }
 }
 
-.hero-slider__button {
+.hero-slider__link {
   text-transform: uppercase;
+  text-decoration: none;
   min-height: 44px;
   font-weight: 500;
   font-size: $font-size-12;
@@ -278,12 +365,12 @@
     display: block;
     width: 7px;
     height: 7px;
-    top: 50%;
     right: 18px;
-    transform: translateY(-50%);
     z-index: 10;
+    transition: all 0.3s;
 
     @media (min-width: $tablet) {
+      mask-image: url("/__spritemap#sprite-arrow-btn-view");
       mask-size: 8px 8px;
       width: 8px;
       height: 8px;
@@ -308,89 +395,52 @@
     width: 199px;
     min-height: 58px;
   }
-}
 
-.hero-slider .swiper-pagination.swiper-pagination-bullets {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
-  width: 80px;
-  height: 28px;
-  background-color: $color-additional;
-  border-radius: 12px 12px 0 0;
-  position: absolute;
-  left: calc(50% - 145px);
-  z-index: 1;
-
-  &::after {
-    content: "";
-    position: absolute;
-    background-image: url("/__spritemap#sprite-angle-view");
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 10px;
-    height: 10px;
-    right: -10px;
-    bottom: 0;
-    rotate: -90deg;
-
-    @media (min-width: $tablet) {
-      width: 20px;
-      height: 20px;
-      right: -20px;
-    }
+  &:hover,
+  &:active {
+    background-color: $color-accent;
+    color: $color-additional;
+    transition: all 0.3s;
   }
 
-  @media (min-width: $tablet) {
-    width: 100px;
-    height: 40px;
-    border-radius: 20px 20px 0 0;
-    left: calc(50% - 339px);
+  &:active {
+    color: rgba(255, 255, 255, 0.7);
   }
 
-  @media (min-width: $desktop) {
-    left: calc(50% - 620px);
-  }
-}
-
-.hero-slider__bullet {
-  width: 8px;
-  height: 8px;
-  display: block;
-  border-radius: 100%;
-  background-color: transparent;
-  border: 2px solid $color-accent;
-  box-sizing: border-box;
-  position: relative;
-  padding: 0;
-
-  @media (min-width: $tablet) {
-    width: 12px;
-    height: 12px;
+  &:hover::before,
+  &:active::before {
+    background-color: $color-additional;
   }
 
-  // &:hover {
-  //   background-color: #d9d9d9;
-  // }
+  &:hover::after,
+  &:active::after {
+    background-color: $color-accent;
+    transform: rotate(45deg);
+    transition: all 0.3s;
+  }
 
-  // &:active {
-  //   background-color: rgba(255, 255, 255, 0.5);
-  // }
+  &:active::after {
+    opacity: 0.7;
+  }
 
-  // &:focus,
-  // &:focus-visible {
-  //   outline: 1px solid rgba(255, 255, 255, 0.5);
-  //   outline-offset: 2px;
-  // }
+  &:not([disabled]):focus::after,
+  &:not([disabled]):focus-visible::after {
+    transform: rotate(45deg);
+    transition: all 0.3s;
+  }
 
-  // &:active:not(:focus),
-  // &:active:not(:hover) {
-  //   background-color: transparent;
-  // }
-}
+  &[disabled] {
+    border-color: $color-disabled;
+    color: $color-disabled;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
 
-.hero-slider__bullet.hero-slider__bullet--active {
-  background-color: #275699;
-  border: none;
+  &[disabled]::before {
+    background-color: $color-disabled;
+  }
+
+  &[disabled]::after {
+    opacity: 0.6;
+  }
 }

@@ -8,9 +8,9 @@
   visibility: hidden;
   width: 0;
   overflow: hidden;
-  position: absolute; /* Чтобы меню не толкало контент */
-  right: 0; /* Прижимаем к правому краю */
-  top: 100%; /* Располагаем под кнопкой */
+  position: absolute;
+  right: 0;
+  top: 100%;
   margin-top: 4px;
   white-space: nowrap;
 }
@@ -79,5 +79,19 @@
 
   @media (min-width: $tablet) {
     width: 286px;
+  }
+
+  &:hover {
+    background-color: $color-additional;
+    color: $color-accent;
+    transition: all 0.3s;
+  }
+
+  &:hover::before {
+    background-color: $color-accent;
+  }
+
+  &:hover::after {
+    background-color: $color-additional;
   }
 }

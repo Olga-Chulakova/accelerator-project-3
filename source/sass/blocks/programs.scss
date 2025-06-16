@@ -31,6 +31,8 @@
   margin-bottom: 29px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
   min-height: 30px;
 
   @media (min-width: $tablet) {
@@ -241,6 +243,7 @@
   align-items: center;
   justify-content: center;
   margin-top: -1px;
+  outline: none;
 
   &::after {
     content: "";
@@ -251,6 +254,39 @@
     background-color: #ffffff;
     width: 8px;
     height: 8px;
+    transition: all 0.3s;
+  }
+
+  &:hover,
+  &:active {
+    background-color: $color-additional;
+  }
+
+  &:not([disabled]):hover::after,
+  &:not([disabled]):active::after {
+    transform: rotate(45deg);
+    transition: all 0.3s;
+    background-color: $color-accent;
+  }
+
+  &:not([disabled]):active::after {
+    opacity: 0.7;
+  }
+
+  &:not([disabled]):focus::after,
+  &:not([disabled]):focus-visible::after {
+    transform: rotate(45deg);
+    transition: all 0.3s;
+  }
+
+  &[disabled] {
+    background-color: $color-disabled;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  &[disabled]::after {
+    opacity: 0.6;
   }
 }
 
@@ -278,17 +314,13 @@
 .programs__link-wrapper {
   width: 290px;
   margin: 0 auto;
+  position: absolute;
+  bottom: -74px;
 
   @media (min-width: $tablet) {
     width: auto;
-    position: absolute;
-    top: 0;
-    right: 45px;
-  }
-
-  @media (min-width: $desktop) {
-    top: 2px;
-    right: 0;
+    position: static;
+    margin: 0;
   }
 }
 
@@ -302,7 +334,7 @@
   letter-spacing: 0.24px;
   color: $color-accent;
   background-color: transparent;
-  padding: 1px 69px 0 31px;
+  padding: 2px 69px 2px 31px;
   border-radius: 30px;
   border: 1px solid $color-accent;
   box-sizing: border-box;
@@ -312,6 +344,7 @@
   align-items: center;
   position: relative;
   cursor: pointer;
+  transition: all 0.3s;
 
   &::before {
     content: "";
@@ -342,16 +375,17 @@
     display: block;
     width: 8px;
     height: 8px;
-    top: 50%;
-    right: 18px;
-    transform: translateY(-50%);
+    right: 17px;
     z-index: 10;
+    transition: all 0.3s;
+    margin-top: -1px;
 
     @media (min-width: $tablet) {
       mask-size: 8px 8px;
       width: 8px;
       height: 8px;
       right: 23px;
+      margin-top: 0;
     }
 
     @media (min-width: $desktop) {
@@ -365,7 +399,55 @@
     letter-spacing: 0.28px;
     width: 234px;
     min-height: 56px;
-    padding: 0 81px 0 30px;
+    padding: 5px 81px 5px 30px;
+  }
+
+  &:hover,
+  &:active {
+    background-color: $color-accent;
+    color: $color-additional;
+    transition: all 0.3s;
+  }
+
+  &:active {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  &:hover::before,
+  &:active::before {
+    background-color: $color-additional;
+  }
+
+  &:hover::after,
+  &:active::after {
+    background-color: $color-accent;
+    transform: rotate(45deg);
+    transition: all 0.3s;
+  }
+
+  &:active::after {
+    opacity: 0.7;
+  }
+
+  &:not([disabled]):focus::after,
+  &:not([disabled]):focus-visible::after {
+    transform: rotate(45deg);
+    transition: all 0.3s;
+  }
+
+  &[disabled] {
+    border-color: $color-disabled;
+    color: $color-disabled;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  &[disabled]::before {
+    background-color: $color-disabled;
+  }
+
+  &[disabled]::after {
+    opacity: 0.6;
   }
 }
 
@@ -449,6 +531,28 @@
     transform: translate(-50%, -50%);
     transition: background-color 0.2s ease-in-out;
     z-index: 1;
+  }
+
+  &:active,
+  &:focus,
+  &:focus-visible {
+    background-color: $color-additional;
+    border-radius: 30px;
+    outline: none;
+  }
+
+  &:not(:disabled):hover::before,
+  &:not(:disabled):active::before {
+    opacity: 0.7;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  &:disabled::before {
+    background-color: $color-disabled;
   }
 }
 
